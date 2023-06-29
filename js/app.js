@@ -1,44 +1,39 @@
 
-//上いらない
 
-const weatherNum = 3;
 
-const fetchW = async () =>{
-  for(let i =1; i <= weatherNum; i++){
-    await getW(i);
+const cuteNum = 5;
+
+const fetchC = async () =>{
+  for(let i =0; i <= cuteNum; i++){
+    await getC(i);
   }
 };
 
 
-const getW = async (id) =>{
+const getC = async (id) =>{
   const url = `https://rickandmortyapi.com/api/character`;
   const res = await fetch(url);
-  const weather = await res .json();
-  console.log(weather);
-  createW(weather);
+  const cute = await res .json();
+  console.log(cute);
+  createC(cute);
 }
 
 
-function createW(weather){
-  const tenki = `
-  <div>${weather.results[0].id}</div>
-  <img src=${weather.results[0].image}>
+function createC(cute){
+  const kawaii = `
+  <div>
+  <img src=${cute.results[0].image}>
+  <p class="id">No.${cute.results[0].id}</p>
+  <p class="name">${cute.results[0].name}</p>
+  <p class="status">★${cute.results[0].status}</p>
+  </div>
   
   `
 
-  $(".list").append(tenki);
+  $(".list").append(kawaii);
 };
 
-fetchW();
-
-//こんなやり方もあった
-
-// const url = 'https://api.open-meteo.com/v1/forecast?latitude=35.69&longitude=139.69&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo';
-
-
-// fetch(url)
-//   .then(data => data.json())
-//   .then(json => console.log(json))
+fetchC();
 
 
 
